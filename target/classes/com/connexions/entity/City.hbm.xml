@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.connexions.entity.City" table = "CITY">
+      
+      <meta attribute = "class-description">
+         This class contains the city detail. 
+      </meta>
+      
+      <id name="city_id" type="java.lang.Integer">
+            <column name="city_id" />
+            <generator class="identity" />
+        </id>
+      <many-to-one name="state" class="com.connexions.entity.State" fetch="select">
+            <column name="state_id" not-null="true" />
+      </many-to-one>
+      <property name = "city_name" column = "city_name" type = "string"/>
+      <property name = "city_code" column = "city_code" type = "string"/>
+      <property name = "created_by" column = "created_by" type = "string"/>
+      <property name = "created_date" column = "created_date" type = "date"/>
+      <property name = "is_deleted" column = "is_deleted" type = "boolean"/>
+      <property name = "state_id" column = "state_id" type = "java.lang.Integer" insert="false" update="false"/>
+      
+   </class>
+</hibernate-mapping>
